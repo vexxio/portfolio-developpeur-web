@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portfolio Développeur Web Junior - AFPA</title>
+
+<meta name="description" content="Portfolio de reconversion vers le métier de développeur web junior. Projet AFPA et formation OpenClassrooms.">
+
+<meta name="keywords" content="développeur web, portfolio, AFPA, OpenClassrooms, HTML CSS JavaScript">
+
+<meta name="author" content="Amine Lanteuil">
+
+<style>
+/* ton CSS reste identique */
+</style>
+</head>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #060a14;
+  color: #e5e7eb;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  padding: 14px;
+  background: rgba(10,15,30,0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  z-index: 1000;
+}
+
+nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #38bdf8;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background: radial-gradient(circle at top, #1e293b, #060a14);
+}
+
+.hero h1 {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #94a3b8;
+  font-size: 18px;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #38bdf8, #60a5fa);
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* SECTIONS */
+section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 100px 20px;
+}
+
+/* CARDS */
+.card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 18px;
+  backdrop-filter: blur(10px);
+
+  opacity: 0;
+  transform: translateY(35px) scale(0.98);
+  transition: all 0.7s ease;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+h2 {
+  color: #38bdf8;
+  margin-bottom: 10px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #0b1220;
+  color: #94a3b8;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#accueil">Accueil</a>
+  <a href="#profil">Profil</a>
+  <a href="#objectif">Objectif</a>
+  <a href="#openclassrooms">OpenClassrooms</a>
+  <a href="#afpa">AFPA</a>
+  <a href="#enquete">Enquête</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="accueil">
+  <h1>Développeur Web Junior</h1>
+  <p>Full Stack en progression • Projet AFPA • OpenClassrooms</p>
+  <button class="btn" onclick="document.getElementById('profil').scrollIntoView()">
+    Découvrir mon parcours
+  </button>
+</div>
+
+<!-- PROFIL -->
+<section id="profil">
+  <div class="card">
+    <h2>👤 Profil</h2>
+    <p>
+      Dans le cadre d’une reconversion professionnelle, je débute dans le développement web.
+      Mon objectif est de devenir développeur web junior avec une évolution vers le full stack.
+    </p>
+  </div>
+</section>
+
+<!-- OBJECTIF -->
+<section id="objectif">
+  <div class="card">
+    <h2>🎯 Objectif</h2>
+    <p>
+      Devenir développeur web junior généraliste, capable de travailler sur le front-end et le back-end,
+      en construisant des projets concrets et professionnels.
+    </p>
+  </div>
+</section>
+
+<!-- OPENCLASSROOMS -->
+<section id="openclassrooms">
+
+  <div class="card">
+    <h2>🎓 Formation OpenClassrooms</h2>
+    <p><b>Date :</b> 12 juin 2026</p>
+    <p><b>Contact :</b> E-mail</p>
+  </div>
+
+  <div class="card">
+    <h2>Contenu de la formation</h2>
+    <p>HTML, CSS, JavaScript, frameworks modernes, API, accessibilité, sécurité web, gestion de projet.</p>
+  </div>
+
+  <div class="card">
+    <h2>Organisation</h2>
+    <p>Formation 100% à distance avec accompagnement hebdomadaire par un mentor.</p>
+  </div>
+
+  <div class="card">
+    <h2>Débouchés</h2>
+    <p>Développeur web, front-end, back-end, intégrateur web, freelance.</p>
+  </div>
+
+  <div class="card">
+    <h2>Analyse personnelle</h2>
+    <p>
+      Cette formation m’intéresse pour son apprentissage structuré, ses projets concrets
+      et son diplôme reconnu par l’État.
+    </p>
+  </div>
+
+</section>
+
+<!-- AFPA -->
+<section id="afpa">
+  <div class="card">
+    <h2>📊 Projet AFPA</h2>
+    <p>
+      Projet de validation d’orientation professionnelle basé sur une enquête métier
+      et une analyse du secteur du développement web.
+    </p>
+  </div>
+</section>
+
+<!-- ENQUÊTE -->
+<section id="enquete">
+
+  <div class="card">
+    <h2>👨‍💻 Enquête métier</h2>
+    <p><b>Nom :</b> Vincent Buisson</p>
+    <p><b>Entreprise :</b> 2Vcréation</p>
+    <p><b>Date :</b> 12 juin 2026</p>
+    <p><b>Contact :</b> E-mail</p>
+  </div>
+
+  <div class="card">
+    <h2>Journée type</h2>
+    <p>Gestion de projets, maintenance, analyse, correction de bugs et développement de fonctionnalités.</p>
+  </div>
+
+  <div class="card">
+    <h2>Compétences clés</h2>
+    <p>Analyse, rigueur, patience, remise en question, choix techniques durables.</p>
+  </div>
+
+  <div class="card">
+    <h2>Difficultés</h2>
+    <p>Évolution rapide des technologies et nécessité de formation continue.</p>
+  </div>
+
+  <div class="card">
+    <h2>Aspect apprécié</h2>
+    <p>Résolution de problèmes et création de fonctionnalités utiles.</p>
+  </div>
+
+  <div class="card">
+    <h2>Conseil</h2>
+    <p>Pratiquer, créer des projets, comprendre le code et rester curieux.</p>
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="card">
+    <h2>📩 Contact</h2>
+    <p>Email : lanteuilamine@gmail.com</p>
+  </div>
+</section>
+
+<footer>
+  Portfolio Développeur Web Junior © 2026
+</footer>
+
+<script>
+const cards = document.querySelectorAll('.card');
+
+function reveal() {
+  cards.forEach(card => {
+    const top = card.getBoundingClientRect().top;
+    if (top < window.innerHeight - 80) {
+      card.classList.add('show');
+    }
+  });
+}
+
+window.addEventListener('scroll', reveal);
+window.addEventListener('load', reveal);
+</script>
+
+</body>
+</html>
