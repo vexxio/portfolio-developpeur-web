@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amine Lanteuil | Portfolio Développeur Web Junior</title>
+  <meta name="description" content="Portfolio d'Amine Lanteuil, projet professionnel développeur web et web mobile dans le cadre de la Prépa Compétences AFPA." />
+  <meta name="author" content="Amine Lanteuil" />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-2: #0b1024;
+      --card: rgba(255,255,255,0.07);
+      --border: rgba(255,255,255,0.14);
+      --text: #f8fafc;
+      --muted: #a5b4fc;
+      --soft: #cbd5e1;
+      --blue: #38bdf8;
+      --violet: #8b5cf6;
+      --pink: #ec4899;
+      --green: #22c55e;
+      --shadow: 0 25px 80px rgba(0,0,0,.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 15% 20%, rgba(139,92,246,.28), transparent 35%),
+        radial-gradient(circle at 85% 10%, rgba(56,189,248,.22), transparent 34%),
+        radial-gradient(circle at 50% 90%, rgba(236,72,153,.12), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+      pointer-events: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    nav {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1080px, calc(100% - 24px));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: rgba(5, 8, 22, .72);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      backdrop-filter: blur(18px);
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+
+    .logo {
+      font-weight: 900;
+      letter-spacing: .5px;
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      color: var(--soft);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    nav a:hover {
+      color: var(--blue);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 130px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 9px 13px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      color: var(--soft);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 20px var(--green);
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: .95;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, var(--blue), var(--violet), var(--pink));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--soft);
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 680px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 16px;
+      padding: 14px 20px;
+      font-weight: 900;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      color: #04111d;
+      background: linear-gradient(90deg, var(--blue), #60a5fa);
+      transition: .25s;
+      box-shadow: 0 18px 40px rgba(56,189,248,.22);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,.07);
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .profile-card {
+      position: relative;
+      padding: 28px;
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.05));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background: rgba(56,189,248,.25);
+      filter: blur(55px);
+      top: -40px;
+      right: -40px;
+    }
+
+    .avatar {
+      width: 92px;
+      height: 92px;
+      border-radius: 26px;
+      display: grid;
+      place-items: center;
+      font-size: 34px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      margin-bottom: 18px;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .mini {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      color: var(--soft);
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 4vw, 48px);
+      margin-bottom: 14px;
+    }
+
+    .section-subtitle {
+      color: var(--soft);
+      line-height: 1.7;
+      max-width: 780px;
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 18px 50px rgba(0,0,0,.18);
+      opacity: 0;
+      transform: translateY(28px);
+      transition: .65s ease;
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card h3 {
+      color: var(--text);
+      margin-bottom: 12px;
+      font-size: 21px;
+    }
+
+    .card p, .card li {
+      color: var(--soft);
+      line-height: 1.65;
+    }
+
+    .tag-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .tag {
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(56,189,248,.1);
+      border: 1px solid rgba(56,189,248,.25);
+      color: #bae6fd;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .skill {
+      margin-top: 16px;
+    }
+
+    .skill-top {
+      display: flex;
+      justify-content: space-between;
+      color: var(--soft);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .bar {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.09);
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      width: var(--w);
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--blue), var(--violet));
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      border-left: 3px solid var(--blue);
+      padding-left: 18px;
+    }
+
+    .quote {
+      font-style: italic;
+      color: #e0f2fe !important;
+    }
+
+    .table {
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255,255,255,.05);
+    }
+
+    th, td {
+      padding: 15px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      text-align: left;
+      color: var(--soft);
+    }
+
+    th {
+      color: var(--text);
+      background: rgba(255,255,255,.08);
+    }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: var(--soft);
+      border-top: 1px solid var(--border);
+      background: rgba(0,0,0,.16);
+    }
+
+    .floating {
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @media (max-width: 850px) {
+      nav {
+        position: sticky;
+        top: 8px;
+        transform: none;
+        left: auto;
+        margin: 8px auto;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid, .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">Amine<span>.dev</span></div>
+    <div class="nav-links">
+      <a href="#profil">Profil</a>
+      <a href="#competences">Compétences</a>
+      <a href="#projet">Projet AFPA</a>
+      <a href="#enquete">Enquête</a>
+      <a href="#formations">Formations</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="accueil">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge"><span class="dot"></span> Portfolio AFPA • Reconversion web</div>
+        <h1>Amine Lanteuil<br><span class="gradient">Développeur Web Junior</span></h1>
+        <p>
+          Je construis mon projet professionnel vers le métier de Développeur Web et Web Mobile.
+          Ce portfolio présente mon enquête métier, mes recherches de formations, mes compétences
+          en progression et ma motivation pour entrer dans ce domaine.
+        </p>
+        <div class="actions">
+          <a class="btn" href="#projet">Voir mon projet</a>
+          <a class="btn secondary" href="#enquete">Lire l'enquête métier</a>
+        </div>
+      </div>
+
+      <div class="profile-card floating">
+        <div class="avatar">AL</div>
+        <h2>Futur développeur web</h2>
+        <p>Prépa Compétences AFPA • Projet professionnel orienté web, pratique, logique et création de projets.</p>
+        <div class="mini-list">
+          <div class="mini"><span>Objectif</span><strong>Dev Web & Mobile</strong></div>
+          <div class="mini"><span>Localisation</span><strong>Sarreguemines</strong></div>
+          <div class="mini"><span>Stack actuelle</span><strong>HTML • CSS • JS</strong></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="profil">
+      <div class="container">
+        <h2 class="section-title">Profil</h2>
+        <p class="section-subtitle">
+          Je suis en construction de projet professionnel avec l'AFPA. Mon objectif est de confirmer
+          mon orientation vers le développement web grâce à des recherches concrètes, des contacts professionnels
+          et des projets personnels.
+        </p>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>🎯 Objectif clair</h3>
+            <p>Intégrer une formation de Développeur Web et Web Mobile pour acquérir un niveau professionnel.</p>
+          </div>
+          <div class="card">
+            <h3>💻 Pratique</h3>
+            <p>Création d'un portfolio en HTML, CSS et JavaScript, publié avec GitHub Pages.</p>
+          </div>
+          <div class="card">
+            <h3>🚀 Motivation</h3>
+            <p>Apprendre progressivement, créer des projets utiles et évoluer vers le full stack.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="competences">
+      <div class="container">
+        <h2 class="section-title">Compétences en progression</h2>
+        <p class="section-subtitle">Mes bases actuelles et les compétences que je développe pour réussir dans le web.</p>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Compétences techniques</h3>
+            <div class="skill"><div class="skill-top"><span>HTML / Structure</span><span>75%</span></div><div class="bar"><span style="--w:75%"></span></div></div>
+            <div class="skill"><div class="skill-top"><span>CSS / Design responsive</span><span>70%</span></div><div class="bar"><span style="--w:70%"></span></div></div>
+            <div class="skill"><div class="skill-top"><span>JavaScript / Interactions</span><span>45%</span></div><div class="bar"><span style="--w:45%"></span></div></div>
+            <div class="skill"><div class="skill-top"><span>Git & GitHub</span><span>55%</span></div><div class="bar"><span style="--w:55%"></span></div></div>
+          </div>
+
+          <div class="card">
+            <h3>Résultats AFPA</h3>
+            <div class="skill"><div class="skill-top"><span>Communication écrite</span><span>100%</span></div><div class="bar"><span style="--w:100%"></span></div></div>
+            <div class="skill"><div class="skill-top"><span>Informatique</span><span>91%</span></div><div class="bar"><span style="--w:91%"></span></div></div>
+            <div class="skill"><div class="skill-top"><span>Bureautique / Web</span><span>88%</span></div><div class="bar"><span style="--w:88%"></span></div></div>
+            <div class="skill"><div class="skill-top"><span>Analyse</span><span>80%</span></div><div class="bar"><span style="--w:80%"></span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projet">
+      <div class="container">
+        <h2 class="section-title">Projet AFPA</h2>
+        <p class="section-subtitle">
+          Mon dossier repose sur une démarche simple : comprendre le métier, interroger des professionnels,
+          comparer les formations et créer un premier projet web pour prouver mon intérêt.
+        </p>
+
+        <div class="grid grid-2">
+          <div class="card timeline">
+            <div class="timeline-item">
+              <h3>1. Recherche métier</h3>
+              <p>Comprendre le rôle d'un développeur web, ses missions, ses difficultés et ses compétences.</p>
+            </div>
+            <div class="timeline-item">
+              <h3>2. Contacts professionnels</h3>
+              <p>Échanges avec des développeurs pour obtenir des réponses concrètes sur le terrain.</p>
+            </div>
+            <div class="timeline-item">
+              <h3>3. Formations étudiées</h3>
+              <p>OpenClassrooms, AFPA, Studi, Educatel et CNAM.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Ce que j'ai appris</h3>
+            <p>
+              Le développement web demande de la pratique, de la logique, de l'autonomie, mais aussi une vraie capacité
+              à communiquer avec l'équipe et à comprendre les besoins des utilisateurs.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Autonomie</span>
+              <span class="tag">Travail d'équipe</span>
+              <span class="tag">Pratique</span>
+              <span class="tag">Curiosité</span>
+              <span class="tag">Résolution de problèmes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="enquete">
+      <div class="container">
+        <h2 class="section-title">Enquête métier</h2>
+        <p class="section-subtitle">
+          J'ai contacté des professionnels afin d'obtenir une vision réaliste du métier de développeur web.
+        </p>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Vincent Buisson • 2Vcréation</h3>
+            <p>
+              Son témoignage met en avant l'importance de la curiosité, de la résolution de problèmes,
+              de la rigueur, du travail d'équipe et de l'apprentissage continu.
+            </p>
+            <p class="quote">“Le métier évolue constamment : il faut rester curieux et pratiquer.”</p>
+          </div>
+
+          <div class="card">
+            <h3>Fabien Amann • Développeur web</h3>
+            <p>
+              Sa journée type alterne développement de fonctionnalités, correction de bugs, refactorisation
+              et échanges avec l'équipe pour préparer les prochains développements.
+            </p>
+            <p class="quote">“Pratiquer. Pratiquer. Maîtriser les bases avant de s'appuyer sur l'IA.”</p>
+          </div>
+
+          <div class="card">
+            <h3>Compétences citées</h3>
+            <p>Autonomie, travail en équipe, communication, compréhension des besoins clients, logique et rigueur.</p>
+          </div>
+
+          <div class="card">
+            <h3>Difficultés du métier</h3>
+            <p>Comprendre les attentes des clients, se mettre à la place de l'utilisateur et suivre l'évolution rapide des technologies.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="formations">
+      <div class="container">
+        <h2 class="section-title">Formations étudiées</h2>
+        <p class="section-subtitle">
+          Comparatif des formations repérées pour poursuivre mon projet professionnel.
+        </p>
+
+        <div class="table card">
+          <table>
+            <thead>
+              <tr>
+                <th>Formation</th>
+                <th>Modalité</th>
+                <th>Durée</th>
+                <th>Intérêt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>OpenClassrooms</td>
+                <td>À distance</td>
+                <td>6 à 12 mois</td>
+                <td>Projets concrets + mentor</td>
+              </tr>
+              <tr>
+                <td>AFPA DWWM</td>
+                <td>Présentiel</td>
+                <td>Environ 8 mois</td>
+                <td>Titre professionnel reconnu</td>
+              </tr>
+              <tr>
+                <td>Studi</td>
+                <td>À distance</td>
+                <td>8 à 18 mois</td>
+                <td>Formation flexible</td>
+              </tr>
+              <tr>
+                <td>CNAM</td>
+                <td>Hybride / distance</td>
+                <td>Flexible</td>
+                <td>Parcours progressif</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>📩 Me contacter</h3>
+            <p>Email : <strong>lanteuilamine@gmail.com</strong></p>
+            <p>Projet : Développeur Web et Web Mobile</p>
+          </div>
+          <div class="card">
+            <h3>Conclusion</h3>
+            <p>
+              Cette démarche confirme mon intérêt pour le développement web. Je souhaite continuer à apprendre,
+              pratiquer et intégrer une formation adaptée pour transformer ce projet en métier.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Portfolio Amine Lanteuil © 2026 • HTML • CSS • JavaScript • GitHub Pages
+  </footer>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+
+    function revealCards() {
+      cards.forEach((card, index) => {
+        const top = card.getBoundingClientRect().top;
+        if (top < window.innerHeight - 90) {
+          setTimeout(() => card.classList.add('show'), index * 60);
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealCards);
+    window.addEventListener('load', revealCards);
+  </script>
+</body>
+</html>
